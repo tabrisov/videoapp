@@ -1,0 +1,127 @@
+.grid
+  padding-top 60px
+
+.list
+  display flex
+  justify-content space-around
+  flex-wrap wrap
+  padding-bottom 60px
+
+.genre
+  margin 0 auto 30px
+  width 50%
+  font-size 16px
+  line-height 1.5
+
+  +mobile()
+    width 90%
+
+  &__item
+    display inline-block
+    cursor pointer
+    color #99f
+    text-decoration none
+    border-bottom 1px solid rgba(#99f, .2)
+    transition border-bottom-color .2s ease
+
+    &:hover
+      border-bottom-color rgba(#99f,.4);
+
+    &.router-link-exact-active
+      font-weight bold
+      border-bottom none
+      color #444
+    
+    &:not(:last-child)
+      margin-right 1.0em
+  
+.card
+  position relative
+  display flex
+  flex-direction column
+  width 200px
+
+  margin 0 10px 80px
+  list-style none
+  cursor pointer
+
+  &__title
+    margin 16px 0 6px
+    font-weight bold
+    font-size 16px
+    line-height 1.2
+    color #4d5255
+
+  &__poster
+    display block
+    flex-basis 296px
+    flex-shrink 0
+    width 200px
+    height 296px
+    background-position 50% 50%
+    background-size cover
+
+  &__rating
+    display block
+    position absolute
+    width 48px
+    height 28px
+    line-height 28px
+    left 50%
+    margin-left -24px
+    top -14px
+    border-radius 20px
+    text-align center
+    background #ffb10a
+    color #fff
+    font-size 15px
+
+  &__text
+    padding-top 6px
+
+  &__tags
+    margin 0
+  
+  &__tags-item
+    color #66b5e9
+    text-decoration none
+    
+    &:not(:last-child)
+      &::after
+        content ', '
+
+.preview-holder
+  position fixed
+  top 0
+  bottom 0
+  left 0
+  right 0
+  display flex
+  justify-content center
+  align-items center
+  z-index 5
+  pointer-events none
+
+.previewer
+  pointer-events all 
+  position fixed
+  margin auto
+  color #000
+  box-shadow 0 2px 30px -5px rgba(#000, .6)
+
+  +mobile()
+    width 100vw
+    height 100vh
+    background #FFF
+    overflow auto
+
+  +desktop()
+    width 800px
+
+.grid__footer
+  padding 30px
+  font-size 14px
+  color #444
+
+  a
+    color #99f

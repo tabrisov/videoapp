@@ -1,0 +1,62 @@
+.preloader
+  display flex
+  align-items center
+  min-height 3rem
+  padding 0 2.4rem
+  margin-top .8rem
+    
+  &_done
+    opacity 0.3
+
+  &_cell
+    padding-left 0
+    padding-right 1.5rem
+  
+  &__param
+    font-weight 400
+    font-size rem(15)
+    line-height 1.4
+    flex-basis rem(300)
+    padding-right rem(30)
+    padding-left 30px
+    color $text
+    text-indent -26px
+    margin 0
+  
+  &__status
+    display inline-block
+    width 20px
+    margin-right 6px
+    color $blue
+    text-indent 0
+    
+    &_error
+      color $red
+
+  &__spinner
+    display inline-block
+    vertical-align middle
+    position relative
+    top -2px
+    width 1em
+    height 1em
+    border-radius 50%
+    border 2px solid $inputControl
+    border-top-color $blue
+    transform translateZ(0)
+    animation spin .8s infinite linear
+  
+  &__title
+    text-align left
+  
+  &__error
+    display block
+    text-indent 0
+    color $red
+    font-size 1.2rem
+
+@keyframes spin
+  0% 
+    transform rotate(0deg)
+  100%
+    transform rotate(360deg)

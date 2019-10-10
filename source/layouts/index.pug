@@ -1,0 +1,83 @@
+-var root = '//moviesapp.vprocesse.com/';
+-var name = 'Movies';
+-var description = 'Test movie app';
+
+doctype html
+
+html(lang="ru", xml:lang="ru", style="font-size:10px")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="content-language", content="ru")
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name="viewport", content="width=device-width,initial-scale=1.0,maximum-scale=5.0,minimal-ui")
+    meta(name="imagetoolbar" content="no")
+    meta(name="MSThemeCompatible" content="no")
+    meta(http-equiv="cleartype" content="on")
+    meta(name="MobileOptimized" content="480")
+    meta(name="HandheldFriendly" content="True")
+    meta(name="format-detection" content="telephone=no")
+    meta(name="format-detection" content="address=no")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
+
+    link(rel='apple-touch-icon', sizes='57x57', href='/apple-touch-icon-57x57.png?125')
+    link(rel='apple-touch-icon', sizes='114x114', href='/apple-touch-icon-114x114.png?125')
+    link(rel='apple-touch-icon', sizes='60x60', href='/apple-touch-icon-60x60.png?125')
+    link(rel='apple-touch-icon', sizes='120x120', href='/apple-touch-icon-120x120.png?125')
+    link(rel='apple-touch-icon', sizes='72x72', href='/apple-touch-icon-72x72.png?125')
+    link(rel='apple-touch-icon', sizes='144x144', href='/apple-touch-icon-144x144.png?125')
+    link(rel='apple-touch-icon', sizes='76x76', href='/apple-touch-icon-76x76.png?125')
+    link(rel='apple-touch-icon', sizes='152x152', href='/apple-touch-icon-152x152.png?125')
+    link(rel='apple-touch-icon', sizes='180x180', href='/apple-touch-icon-180x180.png?125')
+
+    link(rel='icon', type='image/png', sizes='96x96', href='/favicon-96x96.png?125')
+    link(rel='icon', type='image/png', sizes='32x32', href='/favicon-32x32.png?125')
+    link(rel='icon', type='image/png', sizes='16x16', href='/favicon-16x16.png?125')
+    link(rel='manifest', href='/manifest.json')
+    link(rel='mask-icon', href='/safari-pinned-tab.svg', color='#696969')
+    meta(name="theme-color", content="#ffffff")
+
+    meta(name="application-name", content=name)
+    meta(name="msapplication-tooltip", content=name)
+    meta(name="msapplication-TileColor", content="#00aba9")
+    meta(name="msapplication-TileImage", content="/mstile-144x144.png?125")
+    meta(name="msapplication-starturl", content=root)
+    meta(name="msapplication-tap-highlight", content="no")
+    meta(name="msapplication-square70x70logo", content="/mstile-small.png?125")
+    meta(name="msapplication-square150x150logo", content="/mstile-medium.png?125")
+    meta(name="msapplication-wide310x150logo", content="/mstile-wide.png?125")
+    meta(name="msapplication-square310x310logo", content="/mstile-large.png?125")
+    
+    title= name
+
+    meta(name="description", content=description)
+    meta(name="keywords", content=name)
+
+    meta(property="og:locale", content="ru_RU")
+    meta(property="og:type", content="article")
+    meta(property="og:title", content=name)
+    meta(property="og:description", content=description)
+    meta(property="og:url", content=root)
+    meta(property="og:image", content=root + "og.jpg")
+    meta(property="og:image:width", content="1200")
+    meta(property="og:image:height", content="630")
+    meta(property="og:image:alt", content=name)
+
+    meta(name="twitter:card", content="summary_large_image")
+    meta(name="twitter:site", content="@tabrisov")
+    meta(name="twitter:title", content=name)
+    meta(name="twitter:description", content=description)
+    meta(name="twitter:image", content=root + "twitter-image.jpg")
+
+    style.
+      *,::after,::before{box-sizing:border-box}
+
+    link(href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap&subset=cyrillic" rel="stylesheet")
+
+  body
+    #app
+
+    block production
+
+    noscript
+      p Error: no javascript

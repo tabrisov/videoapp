@@ -1,0 +1,47 @@
+html
+  font-family sans-serif
+  line-height 1.15
+  -webkit-text-size-adjust 100%
+  -ms-text-size-adjust 100%
+  -ms-overflow-style scrollbar
+  -webkit-tap-highlight-color transparent
+
+body
+  margin 0
+  font-weight 300
+  font-family $fontBase
+  font-weight 300
+  line-height 1.5em
+  color $text
+  min-height 100vh
+
+.layout
+  position relative
+  display flex
+  width 100%
+  min-height 100vh
+  background-color $bg
+  transition background-color 0.3s ease
+  
+  &.ui--white
+    background-color $black
+    color $white
+  
+  &__appready
+  &__view
+    width 100%
+    transition background-image .2s ease
+  
+  &__view
+    height 100%
+    
+    &_login
+      position relative 
+      overflow hidden
+      height 100vh 
+      background-image linear-gradient(45deg, #0d8394, #9adeee);
+      padding-left 0
+      z-index 100
+  
+    &_mobile
+      padding-left 0

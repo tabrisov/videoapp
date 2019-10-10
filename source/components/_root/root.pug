@@ -1,0 +1,30 @@
+include ../../../node_modules/bemto.pug/bemto
+
++b.layout#app
+  transition(
+    appear,
+    @enter="hookAppEnter"
+    mode="out-in"
+  )
+    +e.appready(v-if="appIsReady")
+      transition(
+        appear,
+        @enter="hookViewEnter",
+        @leave="hookViewLeave",
+        mode="out-in"
+      )
+        +e.view(
+          :class="{'layout__view_mobile': isMobile}"
+        )
+          .container
+            div(
+              v-if="!dataIsFetched"
+            )
+              preloader(title="Список фильмов", :fetch='fetchMovies', :ok='isMoviesOK', :error="isMoviesError")
+              preloader(title="Список жанров", :fetch='fetchGenres', :ok='isGenresOK', :error="isGenresError")
+
+            router-view(
+              v-else
+              transition-mode="out-in",
+              :key="$route.fullPath"
+            )

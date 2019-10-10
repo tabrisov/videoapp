@@ -1,0 +1,57 @@
+include ../../../../node_modules/bemto.pug/bemto
+
++b.grid(
+  @keyup.esc="closeEntry()"
+  tabindex="0"
+)
+  +b.NAV.genre(v-if="isGenresOK")
+    +e.ROUTER-LINK.item(to="/movies") All
+    +e.ROUTER-LINK.item(
+      v-for="genre in genres"
+      :to="`/movies/genre/${genre.id}`"
+      :key="genre.name"
+    )
+      | {{ genre.name }}
+
+  +b.list(v-if="isMoviesOK")
+    .preview-holder
+      item.previewer(
+        v-if="isEntryOK",
+        :entry="entry",
+        @nodata="fetchEntry",
+        @close="closeEntry"
+      )
+
+    +b.card(
+      v-for="item in list"
+      :key="item.id"
+      :class="{'card_active': targetID == item.id}"
+    )
+      +e.SPAN.rating {{ item.vote_average }}
+      +e.poster(
+        @click="previewEntry(item.id)",
+        :style="'background-image: url(' + base + item.poster_path + ')'"
+      )
+      +e.text
+        +e.H3.title(@click="previewEntry(item.id)")
+          | {{ item.title }}
+        +e.P.tags(v-if="isGenresOK")
+          +e.ROUTER-LINK.tags-item(
+            v-for="(genreID, index) in item.genre_ids"
+            :key="genreID"
+            :to="`/movies/genre/${genreID}`"
+          )
+            | {{ getItemByID(genres, genreID).name }}
+
+  preloader.preloader_cell(
+    v-else
+    title="Идёт загрузка",
+    :fetch="fetchMovies",
+    :ok="isMoviesOK"
+    :error="error"
+  )
+
+  +e.FOOTER.footer
+    | Made in 11 hours.
+    br
+    a(href="//www.upwork.com/o/profiles/users/_~0188b2472b5fad798c/" target="_blank") Aleksey Tabrisov

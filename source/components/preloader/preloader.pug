@@ -1,0 +1,23 @@
+include ../../../node_modules/bemto.pug/bemto
+
++b.preloader(
+  :class="{'preloader_done': ok, 'preloader_error': error}"
+)
+  +e.P.param
+    +e.SPAN.status_error(v-if="error")
+      icon(id="slash")
+    +e.SPAN.status(v-else)
+      icon(v-if="ok", id="check")
+      +e.I.spinner(v-else)
+
+    +e.SPAN.title
+      | {{ title }}
+    +e.error(v-if="error")
+      | {{ error }}
+
+  button.btn(
+    v-if="!ok",
+    @click="fetch"
+    title="Запросить ещё раз"
+  )
+    icon(id="download-cloud")
