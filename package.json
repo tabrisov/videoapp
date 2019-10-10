@@ -61,7 +61,7 @@
     "vue-template-compiler": "^2.2.4",
     "vuex-router-sync": "^4.1.2",
     "webpack": "1.13.2",
-    "webpack-dev-server": "1.16.1",
+    "webpack-dev-server": "3.1.11",
     "webpack-svgstore-plugin": "3.0.6"
   },
   "dependencies": {
