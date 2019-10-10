@@ -1,0 +1,70 @@
+include ../../../../node_modules/bemto.pug/bemto
+
+transition(
+  appear,
+  @enter="hookItemEnter",
+  @leave="hookItemLeave",
+  mode="out-in"
+)
+  +b.preview(v-if="isEntryOK")
+    +e.SPAN.close(
+      @click="close()"
+    )
+      span(v-if="!isMobile") Esc
+
+    +e.backdrop(
+      :style="'background-image: url(' + base + item.backdrop_path + ')'"
+    )
+
+    +e.info
+      +e.top
+        +e.poster(
+          :style="'background-image: url(' + base + item.poster_path + ')'"
+        )
+
+        +e.header
+          +e.title-wrapper
+            +e.H2.header-text
+              +e.SPAN.title {{ item.title }}
+              |  ({{ item.release_date | moment('YYYY')}})
+            +e.SPAN.rating {{ item.vote_average }}
+
+          +e.P.tags(v-if="isGenresOK")
+            +e.SPAN.tags-item(v-for="g in item.genre_ids")
+              | {{ getItemByID(getGenres, g).name }}
+
+          +e.popularity
+            | {{ item.popularity }}
+
+      +e.H4.subtitle Story Line
+      +e.overview
+        | {{ item.overview }} 
+
+      +e.H4.subtitle The Cast
+      +e.UL.cast
+        +e.LI.actor(v-for="c in (fullCast) ? cast : limitedCast")
+          +e.actor-img-holder
+            +e.actor-img(
+              :style="'background-image: url(' + base + c.profile_path + ')'"
+              :title="`${c.name} as ${c.character}`"
+            )
+          +e.B.actor-name {{ c.name }}
+
+        +e.LI.actor(
+          v-if="cast.length > 5",
+          @click="fullCast = !fullCast"
+        )
+          +e.actor-img-holder
+            +e.actor-img_more(v-if="fullCast")
+              icon(id="arrow-left")
+            +e.actor-img_more(v-else) +{{ cast.length - 5 }}
+
+        +e.LI.spinner(v-if="cast.length == 0")
+
+  preloader.preloader(
+    v-else
+    :title="`Запись`",
+    :fetch="fetchItem",
+    :ok="isEntryOK",
+    :error="error"
+  )

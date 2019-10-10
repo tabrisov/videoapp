@@ -1,0 +1,66 @@
+$base-font-size ?= 10px
+
+// PX to REM function
+// use: font-size rem(125)
+rem(value, $base = $base-font-size)
+  return unit(value/$base, 'rem');
+
+// PX to EM function
+// use font-size em(22px, 16px)
+em($value, $base = $base-font-size)
+  $max = length($value)
+
+  $emValues = ()
+  for $i in (0...$max)
+    push($emValues, _convert-to-em($value[$i], $base))
+
+  return $emValues
+
+_convert-to-em($px, $base)
+  if ((unit($px) == '' || unit($px) == 'px') && ($px != 0))
+    return (round($px / $base, 3)) em
+  else
+    return 0
+
+fonts($fontFamily, $src, $weight = normal, $style = normal)
+  @font-face
+    font-family $fontFamily
+    src url(../'~fonts'/$src.woff2) format('woff2'),
+      url(../'~fonts'/$src.woff) format('woff')
+    font-weight $weight
+    font-style $style
+
+placeholder-color($color = currentColor)
+  &::-webkit-input-placeholder
+    color $color !important
+    {block}
+  &:-moz-placeholder
+    color $color !important
+    {block}
+  &::-moz-placeholder
+    color $color !important
+    {block}
+  &:-ms-input-placeholder
+    color $color !important
+    {block}
+  &.placeholder
+    color $color !important
+    {block}
+
+
+dropdown($size)
+  &::after
+    content ''
+    position absolute
+    width $size
+    height $size
+    border-width 0 2px 2px 0
+    border-style solid
+    border-color $inputControl
+    transform rotate(45deg)
+    top 50%
+    margin-top -($size - 1)
+    right 10px
+    z-index 1
+    pointer-events none
+    font-size 120% // redesign 11.12
